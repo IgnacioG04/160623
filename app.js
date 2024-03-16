@@ -18,3 +18,6 @@ app.get("/feed.html", (req, res) => {
 app.get("/profile.html", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./views/profile.html"));
 });
+app.get("/explore.html", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./views/explore.html"));
+});
