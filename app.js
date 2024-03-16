@@ -12,9 +12,9 @@ app.listen(port, () =>console.log("Servidor corriendo con el puerto ${port}"));
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./views/explore.html"));
 })
-app.get("/register", (req, res) => {
+app.get("/feed", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./views/feed.html"))
 })
-app.get("/login", (req, res) => {
+app.get("/profile", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./views/profile.html"))
 })
