@@ -1,25 +1,20 @@
-const express = require('express');
+const express = require("express");
+const path = require("path");
+
 const app = express();
-const path = require('path');
 
-// Establece la carpeta de archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+const publicPath = path.resolve(__dirname, "./public");
+app.use( express.static("public"));
 
-// Rutas para servir los archivos HTML
-app.get('/explore', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'explore.html'));
-});
+const port = process.env.PORT || 3001;
+app.listen(port, () =>console.log("Servidor corriendo con el puerto ${port}"));
 
-app.get('/feed', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'feed.html'));
-});
-
-app.get('/profile', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'profile.html'));
-});
-
-// Inicia el servidor en el puerto 3000
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor Node.js corriendo en el puerto ${PORT}`);
-});
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/explore.html"));
+})
+app.get("/register", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/feed.html"))
+})
+app.get("/login", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/profile.html"))
+})
